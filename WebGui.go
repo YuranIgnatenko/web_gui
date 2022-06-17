@@ -10,6 +10,9 @@ import (
 	"time"
 )
 
+/*
+decorators funcs
+*/
 var S = fmt.Sprintf
 var F = fmt.Fprintf
 var P = fmt.Printf
@@ -17,10 +20,10 @@ var P = fmt.Printf
 type Router struct {
 	PORT         string // ":8001"
 	Mux          *http.ServeMux
-	CntrHandlers int
+	CntrHandlers int // count additions handlers
 }
 
-// use port default: "8001" 
+// use port default: "8001"
 func NewRouter(port string) *Router {
 	router := Router{}
 	router.PORT = ":" + port
@@ -61,7 +64,7 @@ func (router *Router) AddHandlerHtmlPage(path, filename string) {
 	router.CntrHandlers++
 	f := func(w http.ResponseWriter, r *http.Request) {
 		var temp = template.Must(template.ParseFiles(filename))
-		temp.Execute(w,nil)
+		temp.Execute(w, nil)
 	}
 	router.Mux.HandleFunc(path, f)
 }
