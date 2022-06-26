@@ -1,4 +1,4 @@
-package WebGui
+package web_gui
 
 import (
 	"errors"
