@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "WebGui"
+	. "web_gui"
 	"net/http"
 	"time"
 )
